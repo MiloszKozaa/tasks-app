@@ -9,3 +9,10 @@
   color: white;
   text-align: center;
 }
+.done {
+  color: aqua;
+}
+
+.todo {
+  color: #111;
+}
