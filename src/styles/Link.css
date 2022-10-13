@@ -1,0 +1,21 @@
+.link {
+  color: #fff;
+  font-weight: 800;
+  transition: 0.3s;
+}
+
+.link:link {
+  text-decoration: none;
+}
+
+.link:visited {
+  text-decoration: none;
+}
+
+.link:hover {
+  text-shadow: 0 0 20px #fff;
+}
+
+.link:active {
+  text-decoration: none;
+}

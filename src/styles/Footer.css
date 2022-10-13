@@ -1,0 +1,8 @@
+.footerWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  font-size: 15px;
+  gap: 3px;
+}
