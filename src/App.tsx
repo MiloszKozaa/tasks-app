@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { ITask } from './Interfaces';
+import Input from './components/Input';
+import ProgressBar from './components/ProgressBar';
+import Button from './components/Button';
 import './App.css';
 
 function App() {
@@ -11,6 +14,7 @@ function App() {
       id: Math.random(),
       text: toDo,
       done: false,
+      editMode: false,
     };
     listSet([...list, newToDo]);
     console.log(...list);
@@ -40,26 +44,58 @@ function App() {
     listSet(updatedTasks);
   };
 
+  const editTask = (
+    event: any,
+    id: number,
+    done: boolean,
+    editMode: boolean
+  ) => {
+    if (!done && editMode) {
+      const editedList = [...list];
+      editedList[id].text = event.target.value;
+      listSet(editedList);
+    }
+  };
+
   return (
     <div className='App'>
-      <input
-        type='text'
+      <Input
         value={input}
-        onChange={e => {
-          inputSet(e.target.value);
-        }}
-        onKeyPress={onEnterPress}
+        onInputChange={(e: any) => inputSet(e.target.value)}
+        onEnterPress={onEnterPress}
       />
-      {list.length}
+      <ProgressBar list={list} />
       <ul>
-        {list.map((task: any) => (
+        {list.map((task: any, id: any) => (
           <li key={task.id}>
-            <div
-              className={task.done ? 'done' : 'todo'}
-              onClick={() => taskDone(task.id)}>
-              {task.text}
-            </div>
-            <button onClick={() => deleteTask(task.id)}>Delete</button>
+            <Button
+              name='done'
+              style={task.done ? 'done' : 'todo'}
+              onButtonClick={() => taskDone(task.id)}
+            />
+            {!task.done ? (
+              <Button
+                name='Edit'
+                onButtonClick={() =>
+                  task.editMode
+                    ? (task.editMode = false)
+                    : (task.editMode = true)
+                }
+              />
+            ) : null}
+            <Input
+              value={task.text}
+              onInputChange={(e: any) =>
+                editTask(e, id, task.done, task.editMode)
+              }
+              onEnterPress={(e: any) => {
+                if (e.key === 'Enter') {
+                  task.editMode = false;
+                  console.log('pressed enter');
+                }
+              }}
+            />
+            <Button name='Done' onButtonClick={() => deleteTask(task.id)} />
           </li>
         ))}
       </ul>
