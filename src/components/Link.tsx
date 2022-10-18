@@ -1,5 +1,5 @@
 import { LinkTypes } from '../types/App.types';
-import '../styles/Link.css';
+import './Link.css';
 
 const Link = ({ link, linkTitle }: LinkTypes) => {
   return (
