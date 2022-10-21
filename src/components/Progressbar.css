@@ -1,0 +1,22 @@
+.ProgressBar {
+  margin-top: 20px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #308fe7;
+  margin-bottom: 20px;
+  transition: width 0.2s ease-out;
+}
+
+.ProgressBar_progress {
+  color: #308fe7;
+  height: 5px;
+  border-radius: 10px;
+  background-color: #308fe7;
+  box-shadow: 0 0 10px rgba(48, 143, 231, 0.7);
+  transition: width 0.2s ease-out;
+}
+
+.ProgressBar_value {
+  display: flex;
+  flex-direction: row;
+}

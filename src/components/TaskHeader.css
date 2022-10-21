@@ -1,0 +1,50 @@
+.taskHeader_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+
+.taskHeader_Button,
+.taskHeader_ButtonActive {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  border-radius: 40px;
+  border: none;
+  background-color: #308fe7;
+  box-shadow: 0 0 30px rgba(48, 143, 231, 0.5);
+  cursor: pointer;
+  transition: 300ms;
+}
+
+.taskHeader_ButtonActive {
+  box-shadow: 0 0 30px rgb(0, 132, 255);
+}
+
+.taskHeader_Button:hover {
+  box-shadow: 0 0 30px rgb(0, 132, 255);
+  transition: 300ms;
+}
+
+.taskHeader_Button img,
+.taskHeader_ButtonActive img {
+  transition: 300ms;
+}
+
+.taskHeader_data {
+  font-size: 25px;
+  font-weight: bold;
+  transition: 300ms;
+}
+
+.taskHeader_tasksCounter {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  margin-top: 5px;
+  font-size: 15px;
+  color: #308fe7;
+  transition: 300ms;
+}

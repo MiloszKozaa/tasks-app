@@ -1,5 +1,5 @@
-.TasksApp {
-  background-color: #282c34;
+.tasksApp {
+  background-color: #111111;
   height: 100vh;
   display: flex;
   justify-content: space-between;
@@ -10,4 +10,29 @@
   font-size: 20px;
   color: white;
   text-align: center;
+}
+
+.taskApp_wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 500px;
+  width: 300px;
+  background-color: #111111;
+  box-shadow: 0 0 50px #000000;
+  border-radius: 40px;
+  padding: 50px;
+}
+
+.taskApp_content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 450px;
+}
+
+.tasks_wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
 }

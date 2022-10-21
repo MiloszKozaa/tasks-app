@@ -1,7 +1,10 @@
 import Header from '../layouts/Header';
 import Footer from '../layouts/Footer';
 import Task from './Task';
-import Popup from './Popup';
+import TaskHeader from './TaskHeader';
+import FirstView from './FirstView';
+import CreateTask from './CreateTask';
+import Progressbar from './Progressbar';
 import './TasksApp.css';
 import { useReducer, useState } from 'react';
 
@@ -27,38 +30,40 @@ const reducer = (tasks: any, actions: any) => {
   }
 };
 
-const newTask = (name: string) => {
-  return { id: Math.random(), name: name, complete: false };
+const newTask = (name: string, time?: string) => {
+  return { id: Math.random(), name: name, time: time, complete: false };
 };
 
 const TasksApp = () => {
   const [tasks, dispatch] = useReducer(reducer, []);
-  const [name, nameSet] = useState('');
+  const [inputMode, inputModeSet] = useState(false);
+
   return (
-    <div className='TasksApp'>
+    <div className='tasksApp'>
       <Header />
-      <button>Show div</button>
-      <Popup trigger={true} />
-      {/* <div className='TaskApp_wrapper'>
-        <input
-          type='text'
-          value={name}
-          onChange={event => nameSet(event.target.value)}
-          onKeyPress={event => {
-            if (event.key === 'Enter') {
-              dispatch({ type: ACTIONS.ADD_TASK, payload: { name: name } });
-              nameSet('');
-            }
-          }}
+      <div className='taskApp_wrapper'>
+        <TaskHeader
+          tasksCounter={tasks.length}
+          onClick={() => inputModeSet(!inputMode)}
+          inputMode={inputMode}
         />
-        {tasks.length > 0 ? (
-          tasks.map((task: any) => {
-            return <Task key={task.id} task={task} dispatch={dispatch} />;
-          })
-        ) : (
-          <div>Write your first task!</div>
-        )}
-      </div> */}
+        <div className='taskApp_content'>
+          {tasks.length === 0 && !inputMode && (
+            <FirstView activeMode={tasks.length === 0 && !inputMode} />
+          )}
+
+          {inputMode && <CreateTask dispatch={dispatch} />}
+
+          {tasks.length !== 0 && !inputMode && (
+            <div className='tasks_wrapper'>
+              <Progressbar tasks={tasks} />
+              {tasks.map((task: any) => {
+                return <Task key={task.id} task={task} dispatch={dispatch} />;
+              })}
+            </div>
+          )}
+        </div>
+      </div>
       <Footer />
     </div>
   );

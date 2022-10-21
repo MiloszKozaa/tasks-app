@@ -1,0 +1,19 @@
+.firstView,
+.firstView_active {
+  margin-top: 30px;
+  height: 100%;
+  font-size: 30px;
+  font-weight: 500;
+  opacity: 50%;
+  transform: translate(100%) scale(0);
+  transition: 300ms;
+}
+
+.firstView_active {
+  transform: translate(0) scale(1);
+  transition: 300ms;
+}
+
+.firstView img {
+  margin-bottom: 20px;
+}

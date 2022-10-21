@@ -1,0 +1,46 @@
+.task,
+.task_complete {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 45px;
+  font-weight: 500;
+  font-size: 15px;
+  transition: 200ms;
+  cursor: pointer;
+}
+
+.task_complete {
+  text-decoration: line-through;
+  opacity: 30%;
+  transition: 200ms;
+}
+
+.task_complete img {
+  opacity: 100%;
+  transition: 200ms;
+}
+
+.task_name {
+  display: flex;
+  align-items: center;
+  width: 220px;
+  height: 100%;
+  gap: 15px;
+  transition: 200ms;
+}
+
+.task_details {
+  opacity: 80%;
+  transition: 200ms;
+}
+
+.task_delete {
+  height: 45px;
+  width: 45px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: 200ms;
+}
