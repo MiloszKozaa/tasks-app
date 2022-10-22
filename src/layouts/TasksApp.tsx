@@ -1,10 +1,10 @@
 import Header from '../layouts/Header';
 import Footer from '../layouts/Footer';
-import Task from './Task';
-import TaskHeader from './TaskHeader';
-import FirstView from './FirstView';
-import CreateTask from './CreateTask';
-import Progressbar from './Progressbar';
+import Task from '../components/Task';
+import TaskHeader from '../components/TaskHeader';
+import FirstView from '../components/FirstView';
+import CreateTask from '../components/CreateTask';
+import Progressbar from '../components/Progressbar';
 import './TasksApp.css';
 import { useReducer, useState } from 'react';
 

@@ -1,4 +1,4 @@
-import { ACTIONS } from './TasksApp';
+import { ACTIONS } from '../layouts/TasksApp';
 import { useState } from 'react';
 import './CreateTask.css';
 import { CreateTaskTypes } from '../types/App.types';
@@ -7,6 +7,7 @@ const CreateTask = ({ dispatch }: CreateTaskTypes) => {
   const [name, nameSet] = useState('');
   return (
     <div className='createTask_wrapper'>
+      {/*MAX: 18 letters and 10 tasks*/}
       <input
         type='text'
         value={name}

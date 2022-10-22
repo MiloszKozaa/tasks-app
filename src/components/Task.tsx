@@ -1,4 +1,4 @@
-import { ACTIONS } from './TasksApp';
+import { ACTIONS } from '../layouts/TasksApp';
 import { useState } from 'react';
 import './Task.css';
 
@@ -18,23 +18,37 @@ const Task = ({ task, dispatch }: any) => {
           src={
             task.complete
               ? `${process.env.PUBLIC_URL}/icon/done.png`
+              : hover
+              ? `${process.env.PUBLIC_URL}/icon/circle_hover.png`
               : `${process.env.PUBLIC_URL}/icon/circle.png`
           }
         />
         {task.name}
       </div>
       <div className='task_details'>
-        {hover && !task.complete ? (
-          <button
-            className='task_delete'
-            onClick={() =>
-              dispatch({ type: ACTIONS.DELETE_TASK, payload: { id: task.id } })
-            }>
-            <img src={`${process.env.PUBLIC_URL}/icon/delete.png`} />
-          </button>
-        ) : (
-          '10:30 pm'
-        )}
+        <button
+          className={
+            !task.complete
+              ? hover
+                ? 'task_delete_active'
+                : 'task_delete'
+              : 'task_delete'
+          }
+          onClick={() =>
+            dispatch({ type: ACTIONS.DELETE_TASK, payload: { id: task.id } })
+          }>
+          <img src={`${process.env.PUBLIC_URL}/icon/delete.png`} />
+        </button>
+        <div
+          className={
+            !task.complete
+              ? hover
+                ? 'task_time_active'
+                : 'task_time'
+              : 'task_time'
+          }>
+          10:30 pm
+        </div>
       </div>
     </div>
   );
