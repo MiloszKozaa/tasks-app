@@ -48,11 +48,12 @@ const TasksApp = () => {
           inputMode={inputMode}
         />
         <div className='taskApp_content'>
-          {tasks.length === 0 && !inputMode && (
+        <CreateTask dispatch={dispatch} tasks={tasks.length}/>
+          {/* {tasks.length === 0 && !inputMode && (
             <FirstView activeMode={tasks.length === 0 && !inputMode} />
           )}
 
-          {inputMode && <CreateTask dispatch={dispatch} />}
+          {inputMode && <CreateTask dispatch={dispatch} tasks={tasks.length} />}
 
           {tasks.length !== 0 && !inputMode && (
             <div className='tasks_wrapper'>
@@ -61,7 +62,7 @@ const TasksApp = () => {
                 return <Task key={task.id} task={task} dispatch={dispatch} />;
               })}
             </div>
-          )}
+          )} */}
         </div>
       </div>
       <Footer />

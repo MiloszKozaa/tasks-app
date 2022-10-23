@@ -19,6 +19,7 @@ export type FirstViewTypes = {
 
 export type CreateTaskTypes = {
   dispatch: ({}: {}) => void;
+  tasks: number;
 };
 
 export type ProgressbarTypes = {

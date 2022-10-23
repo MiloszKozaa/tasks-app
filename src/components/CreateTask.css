@@ -1,3 +1,58 @@
+.createTask_wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  height: 400px;
+}
+
+.createTask_form {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.createTask_input {
+  background: none;
+  border: none;
+  border-bottom: #fff 2px solid;
+  color: #fff;
+  font-size: 17px;
+  width: 250px;
+  padding: 5px;
+}
+
+.createTask_input:focus {
+  outline: none;
+}
+.createTask_pleaceholder {
+  position: fixed;
+  font-size: 17px;
+  transform: scale(0.7) translateX(-120%) translateY(-230%);
+  opacity: 70%;
+  transition: 100ms ease-in-out;
+}
+
+.createTask_inputInfo {
+  display: flex;
+  justify-content: right;
+  width: 260px;
+  opacity: 80%;
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+.createTask_inputError {
+  font-weight: 700;
+  opacity: 100%;
+}
+
+.createTask_inputError {
+  color: #ef5151;
+}
+
 .createTask_button {
   display: flex;
   justify-content: center;
