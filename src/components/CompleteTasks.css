@@ -1,0 +1,24 @@
+.completeTasks_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 440px;
+  gap: 100px;
+}
+
+.completeTasks_main {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.completeTasks_number {
+  font-size: 40px;
+  color: #308fe7;
+}
+
+.completeTasks_footer {
+  width: 200px;
+  font-size: 20px;
+  opacity: 80%;
+}

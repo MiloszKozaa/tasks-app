@@ -3,26 +3,16 @@ import { useState } from 'react';
 import './CreateTask.css';
 import { CreateTaskTypes } from '../types/App.types';
 
-import Stack from '@mui/material/Stack';
-import TextField from '@mui/material/TextField';
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import TimePicker from '@mui/lab/TimePicker';
-import DateTimePicker from '@mui/lab/DateTimePicker';
-import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
-import MobileDatePicker from '@mui/lab/MobileDatePicker';
-
 const CreateTask = ({ dispatch, tasks }: CreateTaskTypes) => {
   const [name, nameSet] = useState('');
-  const [error, errorSet] = useState(false);
-  const [value, setValue] = useState(new Date('2014-08-18T21:11:54'));
+  const [time, timeSet] = useState('00:00');
+  const [inputError, inputErrorSet] = useState(false);
+  const [timeError, timeErrorSet] = useState(false);
+  const inputLength = 30;
+  const tasksLength = 10;
   const emptyError = 'You have to type something. ';
   const tasksError = 'You can have only 10 tasks. ';
-  const charactersError = `To many characters!   ${name.length} / 22 `;
-
-  const handleChange = (newValue: any) => {
-    setValue(newValue);
-  };
+  const charactersError = `To many characters!   ${name.length} / ${inputLength} `;
 
   return (
     <div className='createTask_wrapper'>
@@ -36,42 +26,55 @@ const CreateTask = ({ dispatch, tasks }: CreateTaskTypes) => {
           value={name}
           onChange={event => {
             nameSet(event.target.value);
-            errorSet(false);
+            inputErrorSet(false);
           }}
         />
         <div className='createTask_inputInfo'>
-          {name.length <= 22 && !error && tasks < 10 && (
-            <div className='createTask_inputCounter'>{name.length} / 22</div>
+          {name.length <= inputLength && !inputError && tasks < tasksLength && (
+            <div className='createTask_inputCounter'>
+              {name.length} / {inputLength}
+            </div>
           )}
           <div className='createTask_inputError'>
-            {error && emptyError}
-            {tasks >= 10 && tasksError}
-            {name.length > 22 && charactersError}
+            {inputError && emptyError}
+            {tasks >= tasksLength && tasksError}
+            {name.length > inputLength && charactersError}
           </div>
         </div>
-      </div>
 
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <Stack spacing={3}>
-          <TimePicker
-            label="Time"
-            value={value}
-            onChange={handleChange}
-            renderInput={(params) => <TextField {...params} />}
-          />
-          
-        </Stack>
-      </LocalizationProvider>
+        <input
+          type='time'
+          className='createTask_time'
+          value={time}
+          onChange={(e: any) => {
+            timeSet(e.target.value);
+            timeErrorSet(false);
+          }}
+        />
+        <div className='createTask_inputError'>{timeError && emptyError}</div>
+      </div>
 
       <button
         className='createTask_button'
         onClick={() => {
-          if (name !== '' && tasks < 10 && name.length <= 22) {
-            dispatch({ type: ACTIONS.ADD_TASK, payload: { name: name } });
+          if (
+            name !== '' &&
+            tasks < tasksLength &&
+            time !== '00:00' &&
+            name.length <= inputLength
+          ) {
+            dispatch({
+              type: ACTIONS.ADD_TASK,
+              payload: { name: name, time: time },
+            });
             nameSet('');
+            timeSet('00:00');
           }
           if (name === '') {
-            errorSet(true);
+            inputErrorSet(true);
+          }
+          if (time === '00:00') {
+            timeErrorSet(true);
           }
         }}>
         <img src={`${process.env.PUBLIC_URL}/icon/apply.png`} alt='' />

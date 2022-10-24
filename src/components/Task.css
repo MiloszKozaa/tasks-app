@@ -24,7 +24,7 @@
 .task_name {
   display: flex;
   align-items: center;
-  width: 220px;
+  width: 250px;
   height: 100%;
   gap: 15px;
   transition: 200ms;
@@ -38,6 +38,11 @@
   transition: 200ms;
 }
 
+.task_time_active {
+  transform: translateX(-100%) translateY(-50%) scale(0);
+  transition: 200ms;
+}
+
 .task_delete,
 .task_delete_active {
   position: fixed;
@@ -47,15 +52,12 @@
   border: none;
   padding: 0;
   cursor: pointer;
-  transform: translateX(-110%) translateY(-45%) scale(0);
+  transform: translateX(-80%) translateY(-45%) scale(0);
   transition: 200ms;
 }
 
 .task_delete_active {
-  transform: translateX(-110%) translateY(-45%) scale(1);
+  transform: translateX(-90%) translateY(-45%) scale(1);
   transition: 200ms;
 }
-.task_time_active {
-  transform: translateX(-100%) translateY(-50%) scale(0);
-  transition: 200ms;
-}
+

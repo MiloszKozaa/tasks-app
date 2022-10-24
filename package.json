@@ -1,6 +1,6 @@
 {
-  "homepage": "https://miloszkozaa.github.io/todo-app",
-  "name": "todo-app",
+  "homepage": "https://miloszkozaa.github.io/tasks-app",
+  "name": "tasks-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

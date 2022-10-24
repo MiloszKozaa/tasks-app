@@ -9,9 +9,9 @@
 .createTask_form {
   margin-top: 50px;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
+  height: 300px;
 }
 
 .createTask_input {
@@ -30,7 +30,7 @@
 .createTask_pleaceholder {
   position: fixed;
   font-size: 17px;
-  transform: scale(0.7) translateX(-120%) translateY(-230%);
+  transform: scale(0.7) translateX(-120%) translateY(-120%);
   opacity: 70%;
   transition: 100ms ease-in-out;
 }
@@ -39,18 +39,38 @@
   display: flex;
   justify-content: right;
   width: 260px;
-  opacity: 80%;
   margin-top: 5px;
   font-size: 12px;
 }
 
+.createTask_inputCounter{
+  opacity: 80%;
+}
+
 .createTask_inputError {
   font-weight: 700;
-  opacity: 100%;
+  opacity: 80%;
+  font-size: 12px;
 }
 
 .createTask_inputError {
   color: #ef5151;
+}
+
+.createTask_time {
+  border: none;
+  border-radius: 10px;
+  background-color: #fff;
+  margin-top: 50px;
+  margin-bottom: 5px;
+  width: 80px;
+  height: 35px;
+  padding: 0 90px;
+  font-weight: 900;
+}
+
+.createTask_time:focus {
+  outline: none;
 }
 
 .createTask_button {

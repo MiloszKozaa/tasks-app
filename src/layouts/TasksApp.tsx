@@ -5,6 +5,7 @@ import TaskHeader from '../components/TaskHeader';
 import FirstView from '../components/FirstView';
 import CreateTask from '../components/CreateTask';
 import Progressbar from '../components/Progressbar';
+import CompleteTasks from '../components/CompleteTasks';
 import './TasksApp.css';
 import { useReducer, useState } from 'react';
 
@@ -17,7 +18,7 @@ export const ACTIONS = {
 const reducer = (tasks: any, actions: any) => {
   switch (actions.type) {
     case ACTIONS.ADD_TASK:
-      return [...tasks, newTask(actions.payload.name)];
+      return [...tasks, newTask(actions.payload.name, actions.payload.time)];
     case ACTIONS.TOGGLE_TASK:
       return tasks.map((task: any) => {
         if (task.id === actions.payload.id) {
@@ -30,7 +31,7 @@ const reducer = (tasks: any, actions: any) => {
   }
 };
 
-const newTask = (name: string, time?: string) => {
+const newTask = (name: string, time: string) => {
   return { id: Math.random(), name: name, time: time, complete: false };
 };
 
@@ -48,21 +49,26 @@ const TasksApp = () => {
           inputMode={inputMode}
         />
         <div className='taskApp_content'>
-        <CreateTask dispatch={dispatch} tasks={tasks.length}/>
-          {/* {tasks.length === 0 && !inputMode && (
+          {tasks.length === 0 && !inputMode && (
             <FirstView activeMode={tasks.length === 0 && !inputMode} />
           )}
 
           {inputMode && <CreateTask dispatch={dispatch} tasks={tasks.length} />}
 
-          {tasks.length !== 0 && !inputMode && (
-            <div className='tasks_wrapper'>
-              <Progressbar tasks={tasks} />
-              {tasks.map((task: any) => {
-                return <Task key={task.id} task={task} dispatch={dispatch} />;
-              })}
-            </div>
-          )} */}
+          {tasks.length !== 0 &&
+            !inputMode &&
+            !tasks.every((done: any) => done.complete === true) && (
+              <div className='tasks_wrapper'>
+                <Progressbar tasks={tasks} />
+                {tasks.map((task: any) => {
+                  return <Task key={task.id} task={task} dispatch={dispatch} />;
+                })}
+              </div>
+            )}
+
+          {tasks.length !== 0 &&
+            tasks.every((done: any) => done.complete === true) &&
+            !inputMode && <CompleteTasks />}
         </div>
       </div>
       <Footer />

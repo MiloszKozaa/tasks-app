@@ -4,6 +4,7 @@ import './Task.css';
 
 const Task = ({ task, dispatch }: any) => {
   const [hover, hoverSet] = useState(false);
+  console.log(task.time.substring(1));
   return (
     <div
       className={task.complete ? 'task_complete' : 'task'}
@@ -47,7 +48,7 @@ const Task = ({ task, dispatch }: any) => {
                 : 'task_time'
               : 'task_time'
           }>
-          10:30 pm
+          {task.time.charAt(0) === '0' ? task.time.substring(1) : task.time}
         </div>
       </div>
     </div>
