@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <div className='headerWrapper'>
       <div className='headerLogo'>
-        <Link link='https://github.com/MiloszKozaa/todo-app' linkTitle='tasks' />
+        <Link link='https://github.com/MiloszKozaa/tasks-app' linkTitle='tasks' />
         app
       </div>
       <div className='headerMade'>
